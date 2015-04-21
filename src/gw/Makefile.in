@@ -1,0 +1,13 @@
+
+SOURCES = 
+SOURCES += unistruct.c 
+SOURCES += ldlist.c 
+SOURCES += gw_cgi.c
+SOURCES += cgi_load.c
+
+
+INCLUDES = \
+
+
+LIBRARIES = \
+

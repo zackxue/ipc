@@ -1,0 +1,10 @@
+
+SOURCES = \
+	  regRW.c	\
+
+
+INCLUDES = \
+
+
+LIBRARIES = \
+

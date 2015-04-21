@@ -1,0 +1,1374 @@
+﻿<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+
+<!--Title -->
+<title>IPcamera</title>
+<!--Style -->
+<link id="css-link" rel="stylesheet" href="config-cold.css">
+<link rel="stylesheet" href="Calendar/jquery.ui.all.css">
+<link rel="stylesheet" href="Calendar/demos.css">
+<script type="text/javascript" src="js/language.js"></script>
+<script type="text/javascript">
+document.write("<scr"+"ipt src=\""+getDefaultLanguage()+"\" id=\"js_lang\" ></sc"+"ript>");
+</script>
+<script type="text/javascript" src="jquery.min.js"></script><!--jQuery.min -->
+<script type="text/javascript" src="js/xml2json.js"></script>
+<script type="text/javascript" src="js/cookie.js"></script>
+<script type="text/javascript" src="js/function.js"></script>
+<script type="text/javascript" src="config.js"></script>
+<script type="text/javascript" src="js/slider.js"></script>
+<script type="text/javascript" src="js/swfupload.js"></script>
+<script type="text/javascript" src="js/jquery.swfupload.js"></script>
+<script src="Calendar/jquery.ui.core.js"></script>
+<script src="Calendar/jquery.ui.widget.js"></script>
+<script src="Calendar/jquery.ui.datepicker.js"></script>
+</head>
+<body>
+<!--onLoad="load1()"-->
+
+<div id="maskbg" class="hidden"></div> 
+<div id="update_process"> 
+<p class="close"><a href="#" onClick="closeBg();"><script type="text/javascript">document.write(langstr.close);</script></a></p> 
+<p><script type="text/javascript">document.write(langstr.upgrade_wait);</script></p>    
+</div>    
+<!-- 升级遮罩层 --> 
+
+<div id="logo" align="center">
+<!--p style=" position:absolute; left:800px; top:65px; height:20px; line-height:20px; font:Arial, Helvetica, sans-serif;font-size:12px;"><a id="en_lang" onClick="setLanguage('en')">English</a></p>
+<p style=" position:absolute; left:850px; top:65px; height:20px; line-height:20px; font:Arial, Helvetica, sans-serif; font-size:12px;"><a id="zh_lang" onClick="setLanguage('zh')">简体中文</a-->
+<select id="sel_lang" style="position:relative; left:400px;top:60px; height:20px; line-height:20px; font:Arial, Helvetica, sans-serif; font-size:12px; width:100px" onChange="setLanguage('lang')">
+<option>--Language--</option>
+<option>English</option>
+<option>简体中文</option>
+<option>繁体中文</option>
+</select></p>
+</div>
+<!--logo-->
+<div id="stage" class="clearfix">
+  <!--Stage-->
+  
+  <div id="left">
+    <div id="logo-config">
+		<span class="logo-inactive" onClick="cslshine(0);"><script type="text/javascript">document.write(langstr.preview);</script></span>
+		<span class="logo-inactive" onClick="cslshine(1);"><script type="text/javascript">document.write(langstr.setup);</script></span></div>
+	<!--logo-config-->
+	<div id="area-stage-left" class="hidden">
+    <a id="video-image" class="btn-left btn-left-active"><script type="text/javascript">document.write(langstr.media);</script></a>
+		<span class="video-image">
+		<ul>
+			<li class="submenu_current"><a id="video"><script type="text/javascript">document.write(langstr.video);</script></a></li>
+			<li><a id="image"><script type="text/javascript">document.write(langstr.image);</script></a></li>
+            <li><a id="isp"><script type="text/javascript">document.write(langstr.isp);</script></a></li>
+		</ul>
+		</span>
+	<a id="network" class="btn-left"><script type="text/javascript">document.write(langstr.network);</script></a>
+		<span class="network hidden">
+		<ul>
+			<li><a id="local-network"><script type="text/javascript">document.write(langstr.local);</script></a></li>
+			<li><a id="remote-network"><script type="text/javascript">document.write(langstr.remote);</script></a></li>
+		</ul>
+		</span>
+	<!--a id="alarm" class="btn-left">报警设置</a>
+		<span class="alarm hidden">
+		<ul>
+			<li><a id="alarmin">报警输入设置</a></li>
+			<li><a id="alarm-time-setting">报警时间设置</a></li>
+			<li><a id="motion-detection">移动侦测</a></li>
+		</ul>
+		</span>
+	<a id="ptzconf" class="btn-left">云台设置</a>
+		<span class="ptzconf hidden">
+		<ul>
+			<li><a id="ptz">云台设置（旧）</a></li>
+			<li><a id="">待添加</a></li>
+		</ul>
+		</span>
+	<a id="record" class="btn-left">录像设置</a>
+		<span class="record hidden">
+		<ul>
+			<li><a id="">待添加</a></li>
+			<li><a id="">待添加</a></li>
+		</ul>
+		</span-->
+	<a id="advanced" class="btn-left"><script type="text/javascript">document.write(langstr.advance_setup)</script></a>
+		<span class="advanced hidden">
+		<ul>
+			<li><a id="user-management"><script type="text/javascript">document.write(langstr.usermanage)</script></a></li>
+			<!--li><a id="capture">抓拍设置</a></li>
+			<li><a id="email">电子邮件设置</a></li-->
+		</ul>
+		</span>
+	<a id="system" class="btn-left"><script type="text/javascript">document.write(langstr.system);</script></a>
+		<span class="system hidden">
+		<ul>
+			<li><a id="time"><script type="text/javascript">document.write(langstr.time);</script></a></li>
+			<li><a id="initialize"><script type="text/javascript">document.write(langstr.initial);</script></a></li>
+			<li><a id="devinfo"><script type="text/javascript">document.write(langstr.devinfo);</script></a></li>
+		</ul>
+		</span>
+    <!--    <div id="btn-apply" class="btn">应用</div>  -->
+	<!-- Menu -->
+	<div id="message_here" style="position:absolute; bottom:12px; left:12px; width:135px; height:30px;"></div>
+	</div>
+	<!--area-stage-left-->
+	<div id="consoler">
+		<div style="position:relative; width:100%; height:100%;">
+			<div class="consoler-title" id="consoler-title"><script type="text/javascript">document.write(langstr.console);</script></div>
+			<hr>
+			
+            <div class="w_imagebtn" style="background:url(images/record.png) no-repeat;" onClick="records()">
+            	<p id="record" class="w_imagebtn_text"><script type="text/javascript">document.write(langstr.record);</script></p></div>
+            <div class="w_imagebtn" style="background:url(images/playback.png) no-repeat;" onClick="playback()">
+            	<p id="playback" class="w_imagebtn_text"><script type="text/javascript">document.write(langstr.playback);</script></p></div>
+          <!--  PTZ  -->
+          <div id="ptz-controller" style="margin-top:10px"> <a id="ptz-controller-up"></a><a id="ptz-controller-left"></a><a id="ptz-controller-cam"></a><a id="ptz-controller-right"></a><a name="ptz-controller-down" id="ptz-controller-down"></a></div>
+          <div class="zoom_area">
+              <p id="zoom-in" class="n_imagebtn" style="background:url(images/zoom-in.png) no-repeat; left:13px;"></p>
+              <p class="n_imagebtn_text" style="left:47px; width:74px;" id="zoom"><script type="text/javascript">document.write(langstr.zoom);</script></p>
+              <p id="zoom-out" class="n_imagebtn" style="background:url(images/zoom-out.png) no-repeat; left:118px"></p>
+          </div>
+          <!--<div class="w_imagebtn" style="background:url(images/fullscreen.png) no-repeat;" onClick="fullscreen_func()">
+          	<p class="w_imagebtn_text" id="fullscreen" ><script type="text/javascript">document.write(langstr.full_screen);</script></p></div>-->
+          <div class="w_imagebtn" style="background:url(images/stream-change.png) no-repeat;" onClick="preview_stream()">
+          	<p class="w_imagebtn_text2" id="stream-change" ><script type="text/javascript">document.write(langstr.stream_change);</script></p></div>
+			<div class="w_imagebtn" style="background:url(images/stream-change.png) no-repeat; z-index:10001;" onClick="javascript:location.href='./CtrlSetup.exe';">
+          	<p class="w_imagebtn_text2" id="manual_download" ><script type="text/javascript">document.write(langstr.Install_ActiveX);</script></p></div>
+        </div>
+	</div>  	
+    <!--Consoler-->
+  </div>  
+  <!--Left-->
+  
+  <div id="area-stage-right" class="hidden">
+  
+    <div class="video">
+      <div id="inner">
+        <div class="window">
+          <div class="title-window"><script type="text/javascript">document.write(langstr.video);</script></div>
+          <div class="mainer">
+		  	<table class="table-common">
+				<tr>
+				  <td class="marker marker-active" colspan="2"><script type="text/javascript">document.write(langstr.shutter);</script></td>
+				</tr>	
+				<tr>
+				  <td width="35%"><script type="text/javascript">document.write(langstr.shutter);</script></td>
+				  <td width="65%">
+				  	<select name="m_shutter" id="juan_envload#video@m_shutter" onChange="on_shutter_change()">
+					  <option value="50hz">50Hz</option>
+					  <option value="60hz">60Hz</option>
+					</select>
+				  </td>
+				</tr>
+				<tr>
+				  <td class="marker marker-active" colspan="2"><script type="text/javascript">document.write(langstr.m_stream);</script></td>
+				</tr>	
+				<tr>
+				  <td width="35%"><script type="text/javascript">document.write(langstr.resolution);</script></td>
+				  <td width="65%">
+					<select name="m_resol" disabled id="juan_envload#video@m_resol" >
+						<option value="qvga">320×240</option>
+						<option value="360p">640×360</option>
+						<option value="720p">1280×960</option>
+					</select>
+				  </td>
+				</tr>
+				<tr>
+				  <td><script type="text/javascript">document.write(langstr.bps+"(1024~6144bps)");</script></td>
+				  <td>
+					<input name="m_bitrate" type="text" id="juan_envload#video@m_bitrate" onChange="bitrate_change('juan_envload#video@m_bitrate',1024,6144)" width="70px"/>
+					<input id="juan_envload#video@m_brfmt" type="radio" name="m_brfmt" checked onClick="m_bps_type()"/>
+					<script type="text/javascript">document.write(langstr.fix);</script>
+					<input id="juan_envload#video@m_brfmt1" type="radio" name="m_brfmt" onClick="m_bps_type()"/>
+					<script type="text/javascript">document.write(langstr.volatile);</script>
+                  </td>
+				</tr>
+				<tr>
+				  <td><script type="text/javascript">document.write(langstr.fps);</script></td>
+				  <td>
+					<select name="m_frate" id="juan_envload#video@m_frate"></select>
+                  </td>
+				</tr>
+				<tr>
+				  <td><script type="text/javascript">document.write(langstr.quality);</script></td>
+				  <td>
+					<select name="m_qual" id="juan_envload#video@m_qual">
+					  <option><script type="text/javascript">document.write(langstr.best);</script></option>
+					  <option><script type="text/javascript">document.write(langstr.good);</script></option>
+					  <option><script type="text/javascript">document.write(langstr.normal);</script></option>
+					  <option><script type="text/javascript">document.write(langstr.bad);</script></option>
+					  <option><script type="text/javascript">document.write(langstr.worst);</script></option>
+					</select>
+				  </td>
+				</tr>
+				<tr>
+				  <td class="marker marker-active" colspan="2"><script type="text/javascript">document.write(langstr.s_stream1);</script></td>
+				</tr>
+				<tr>
+				  <td><script type="text/javascript">document.write(langstr.resolution);</script></td>
+				  <td>
+					<select name="s_resol" id="juan_envload#video@s_resol" >
+						<option value="qvga">320×240</option>
+						<option value="360p">640×360</option>
+						<!--option value="720p">1280×720</option-->
+					</select>
+				  </td>
+				</tr>
+				<tr>
+				  <td><script type="text/javascript">document.write(langstr.bps+"(256~1535bps)");</script></td>
+				  <td>
+					<input name="s_bitrate" type="text" id="juan_envload#video@s_bitrate" onChange="bitrate_change('juan_envload#video@s_bitrate',256,1536)" width="70px"/>
+					<input id="juan_envload#video@s_brfmt" type="radio" name="s_brfmt" checked onClick="s_bps_type()"/>
+					<script type="text/javascript">document.write(langstr.fix);</script>
+					<input id="juan_envload#video@s_brfmt1" type="radio" name="s_brfmt" onClick="s_bps_type()"/>
+					<script type="text/javascript">document.write(langstr.volatile);</script>
+				  </td>
+				</tr>
+				<tr>
+				  <td><script type="text/javascript">document.write(langstr.fps);</script></td>
+				  <td>
+					<select name="s_frate" id="juan_envload#video@s_frate"></select>
+				  </td>
+				</tr>
+				<tr>
+				  <td><script type="text/javascript">document.write(langstr.quality);</script></td>
+				  <td>
+					<select name="s_qual" id="juan_envload#video@s_qual">
+					  <option><script type="text/javascript">document.write(langstr.best);</script></option>
+					  <option><script type="text/javascript">document.write(langstr.good);</script></option>
+					  <option><script type="text/javascript">document.write(langstr.normal);</script></option>
+					  <option><script type="text/javascript">document.write(langstr.bad);</script></option>
+					  <option><script type="text/javascript">document.write(langstr.worst);</script></option>
+					</select>
+				  </td>
+				</tr>
+                <table id="substream2" class="table-common" style="display:none;">
+				<tr>
+				  <td  class="marker marker-active" colspan="2"><script type="text/javascript">document.write(langstr.s_stream2);</script></td>
+				</tr>
+				<tr>
+				  <td width="35%"><script type="text/javascript">document.write(langstr.resolution);</script></td>
+				  <td width="65%">
+					<select name="ss_resol" disabled id="juan_envload#video@ss_resol" >
+						<option value="qvga" selected="selected">320×240</option>
+						<option value="360p">640×360</option>
+						<!--option value="720p">1280×720</option-->
+					</select>
+				  </td>
+				</tr>
+				<tr>
+				  <td><script type="text/javascript">document.write(langstr.bps+"(64~512bps)");</script></td>
+				  <td>
+					<input name="ss_bitrate" type="text" id="juan_envload#video@ss_bitrate" onChange="bitrate_change('juan_envload#video@ss_bitrate',64,512)" width="70px"/>
+					<input id="juan_envload#video@ss_brfmt" type="radio" name="ss_brfmt" checked onClick="ss_bps_type()"/>
+					<script type="text/javascript">document.write(langstr.fix);</script>
+					<input id="juan_envload#video@ss_brfmt1" type="radio" name="ss_brfmt" onClick="ss_bps_type()"/>
+					<script type="text/javascript">document.write(langstr.volatile);</script>
+				  </td>
+				</tr>
+				<tr>
+				  <td><script type="text/javascript">document.write(langstr.fps);</script></td>
+				  <td>
+					<select name="ss_frate" id="juan_envload#video@ss_frate"></select>
+				  </td>
+				</tr>
+				<tr>
+				  <td><script type="text/javascript">document.write(langstr.quality);</script></td>
+				  <td>
+					<select name="ss_qual" id="juan_envload#video@ss_qual">
+					  <option><script type="text/javascript">document.write(langstr.best);</script></option>
+					  <option><script type="text/javascript">document.write(langstr.good);</script></option>
+					  <option><script type="text/javascript">document.write(langstr.normal);</script></option>
+					  <option><script type="text/javascript">document.write(langstr.bad);</script></option>
+					  <option><script type="text/javascript">document.write(langstr.worst);</script></option>
+					</select>
+				  </td>
+				</tr>
+                </table>
+				<tr>
+				  <td colspan="2">&nbsp;</td>
+				</tr>
+			</table>
+            <hr>
+            -<a class="marker marker-active" onClick="video_save_content();"><script type="text/javascript">document.write(langstr.save_video);</script></a><br>
+		  </div>
+        </div>
+      </div>
+    </div>
+	<!--video-->
+	
+    <div class="image hidden">
+      <div id="inner">
+        <div class="window">
+          <div class="title-window"><script type="text/javascript">document.write(langstr.image);</script></div>
+          <div class="mainer">
+            <table class="table-special" align="center">
+                <tr>
+				  <td id="preview_board" colspan="3" align="center" bordercolor="#333333">
+					<div id="display_board">
+					</div>
+                  </td>
+                </tr>
+                <tr>
+					<td width="35%"><script type="text/javascript">document.write(langstr.contrast);</script></td>
+                	<td width="40%">
+						<script language="JavaScript">
+							var A_TPL = {
+								'b_vertical' : false,
+								'b_watch': true,
+								'n_controlWidth': 160,
+								'n_controlHeight': 16,
+								'n_sliderWidth': 16,
+								'n_sliderHeight': 15,
+								'n_pathLeft' : 1,
+								'n_pathTop' : 1,
+								'n_pathLength' : 143,
+								's_imgControl': 'images/slider.jpg',
+								's_imgSlider': 'images/disc.png',
+								'n_zIndex': 1
+							}
+							var A_INIT2 = {
+						//		's_form' : 0,
+								's_name': 'juan_envload#color@con',
+								'n_minValue' : 0,
+								'n_maxValue' : 255,
+								'n_value' : contrast,
+								'n_step' : 1
+							}
+							slider_con=new slider(A_INIT2, A_TPL);
+						</script>
+					</td>
+                  	<td width="35%"><input name="text" type="text" id="juan_envload#color@con" size="3" readonly/></td>
+                </tr>
+                <tr>
+                  <td><script type="text/javascript">document.write(langstr.brightness);</script></td>
+                  <td>
+						<script language="JavaScript">
+							var A_INIT3 = {
+						//		's_form' : 0,
+								's_name': 'juan_envload#color@lum',
+								'n_minValue' : 0,
+								'n_maxValue' : 255,
+								'n_value' : brightness,
+								'n_step' : 1
+							}
+							slider_lum=new slider(A_INIT3, A_TPL);
+						</script>
+				  </td>
+                  <td><input name="text" type="text" id="juan_envload#color@lum" size="3" readonly/></td>
+                </tr>
+                <tr>
+                  <td><script type="text/javascript">document.write(langstr.saturation);</script></td>
+                  <td>
+						<script language="JavaScript">
+						var A_INIT4 = {
+					//		's_form' : 0,
+							's_name': 'juan_envload#color@sat',
+							'n_minValue' : 0,
+							'n_maxValue' : 255,
+							'n_value' : saturation,
+							'n_step' : 1
+						}
+						slider_sat=new slider(A_INIT4, A_TPL);
+						</script>
+				  </td>
+                  <td><input name="text" type="text" id="juan_envload#color@sat" size="3" readonly/></td>
+                </tr>
+                <tr>
+                  <td><script type="text/javascript">document.write(langstr.hue);</script></td>
+                  <td>
+						<script language="JavaScript">
+						var A_INIT5 = {
+					//		's_form' : 0,
+							's_name': 'juan_envload#color@hue',
+							'n_minValue' : 0,
+							'n_maxValue' : 255,
+							'n_value' : hue,
+							'n_step' : 1
+						}
+						slider_hue=new slider(A_INIT5, A_TPL);
+						</script>
+				  </td>
+                  <td><input name="text" type="text" id="juan_envload#color@hue" size="3" readonly/></td>
+                </tr>
+                 <tr>
+                  <td><script type="text/javascript">document.write(langstr.sharpen);</script></td>
+                  <td>
+						<script language="JavaScript">
+						var A_INIT6 = {
+					//		's_form' : 0,
+							's_name': 'juan_envload#color@sha',
+							'n_minValue' : 0, 
+							'n_maxValue' : 255,
+							'n_value' : sharpen,
+							'n_step' : 1
+						}
+						slider_sha=new slider(A_INIT6, A_TPL);
+						</script>
+				  </td>
+                  <td><input name="text" type="text" id="juan_envload#color@sha" size="3" readonly/></td>
+                </tr>
+              </table>
+			<hr>
+			-<a class="marker marker-active" onClick="image_save_content();"><script type="text/javascript">document.write(langstr.save_image);</script></a><br>
+          </div>
+        </div>
+      </div>
+    </div>
+	<!--image-->
+    
+    <div class="isp hidden">
+      <div id="inner">
+        <div class="window">
+          <div class="title-window"><script type="text/javascript">document.write(langstr.isp);</script></div>
+          <div class="mainer">
+            <table class="table-special" align="center">
+                <tr>
+				  <td id="preview_board1" colspan="3" align="center" bordercolor="#333333">
+					<div id="display_board1">
+					</div>
+                  </td>
+                </tr>
+                <tr>
+				  <td class="marker marker-active" colspan="3"><script type="text/javascript">document.write(langstr.scene_mode);</script></td>
+				</tr>	
+				<tr>
+				  <td width="35%"><script type="text/javascript">document.write(langstr.scene);</script></td>
+				  <td colspan="2" width="65%">
+				  	<select name="scene_mode" id="juan_envload#isp@scene_mode"  onChange="isp_preview_content(this.id,this.value)">
+                      <option value="auto"><script type="text/javascript">document.write(langstr.auto);</script></option>
+					  <option value="indoor"><script type="text/javascript">document.write(langstr.indoor);</script></option>
+					  <option value="outdoor"><script type="text/javascript">document.write(langstr.outdoor);</script></option>
+					</select>
+				  </td>
+                 
+				</tr>
+                <tr>
+				  <td class="marker marker-active" colspan="3"><script type="text/javascript">document.write(langstr.white_balance);</script></td>
+				</tr>	
+				<tr>
+				  <td width="35%"><script type="text/javascript">document.write(langstr.wb_mode);</script></td>
+				  <td colspan="2" width="65%">
+				  	<select name="white_balance_mode" id="juan_envload#isp@white_balance_mode"  onChange="isp_preview_content(this.id,this.value)">
+					  <option value="auto"><script type="text/javascript">document.write(langstr.auto);</script></option>
+					  <option value="indoor"><script type="text/javascript">document.write(langstr.indoor);</script></option>
+                      <option value="outdoor"><script type="text/javascript">document.write(langstr.outdoor);</script></option>
+					</select>
+				  </td>
+                 
+				</tr>
+				<tr>
+				  <td class="marker marker-active" colspan="3"><script type="text/javascript">document.write(langstr.day_or_night);</script></td>
+				</tr>	
+				<tr>
+				  <td width="35%"><script type="text/javascript">document.write(langstr.ir_cut_control);</script></td>
+				  <td colspan="2" width="65%">
+				  	<select name="ircut_control_mode" id="juan_envload#isp@ircut_control_mode"  onChange="isp_preview_content(this.id,this.value)">
+					  <option value="hardware"><script type="text/javascript">document.write(langstr.hardware);</script></option>
+					  <option value="software"><script type="text/javascript">document.write(langstr.software);</script></option>         
+					</select>
+				  </td>
+				</tr>
+                <tr>
+				  <td width="35%"><script type="text/javascript">document.write(langstr.ir_cut_mode);</script></td>
+				  <td colspan="2" width="65%">
+				  	<select name="ircut_mode" id="juan_envload#isp@ircut_mode"  onChange="isp_preview_content(this.id,this.value)">
+					  <option value="auto"><script type="text/javascript">document.write(langstr.auto);</script></option>
+					  <option value="daylight"><script type="text/javascript">document.write(langstr.daylight);</script></option>
+                      <option value="night"><script type="text/javascript">document.write(langstr.night);</script></option>
+					</select>
+				  </td>
+				</tr>
+                <tr>
+				  <td class="marker marker-active" colspan="3"><script type="text/javascript">document.write(langstr.wide_dynamic_range);</script></td>
+				</tr>	
+				<tr>
+				  <td width="35%"><script type="text/javascript">document.write(langstr.wdr);</script></td>
+				  <td colspan="2" width="65%">
+				  	<select name="wide_dynamic_range_enable" id="juan_envload#isp@wide_dynamic_range_enable"  onChange="isp_preview_content(this.id,this.value)">
+					  <option value="yes"><script type="text/javascript">document.write(langstr.on);</script></option>
+					  <option value="no"><script type="text/javascript">document.write(langstr.off);</script></option>
+					</select>
+				  </td>
+				</tr>
+                <tr>
+                  <td width="35%"><script type="text/javascript">document.write(langstr.strength);</script></td>
+                  <td width="40%">
+						<script language="JavaScript">
+						var A_INIT7 = {
+					//		's_form' : 0,
+							's_name': 'juan_envload#color@str',
+							'n_minValue' : 0,
+							'n_maxValue' : 255,
+							'n_value' : strength,
+							'n_step' : 1
+						}
+						slider_str=new slider(A_INIT7, A_TPL);
+						</script>
+				  
+                  <td width="25%" align="right"><input name="text" type="text" id="juan_envload#color@str" size="3" readonly/></td>
+                  </td>
+                </tr>
+                <tr>
+				  <td class="marker marker-active" colspan="3"><script type="text/javascript">document.write(langstr.exposure_settings);</script></td>
+				</tr>	
+				<tr>
+				  <td width="35%"><script type="text/javascript">document.write(langstr.exposure);</script></td>
+				  <td colspan="2" width="65%">
+				  	<select name="exposure_mode" id="juan_envload#isp@exposure_mode"  onChange="isp_preview_content(this.id,this.value)">
+					  <option value="auto"><script type="text/javascript">document.write(langstr.normal);</script></option>
+					  <option value="bright"><script type="text/javascript">document.write(langstr.bright);</script></option>
+                      <option value="dark"><script type="text/javascript">document.write(langstr.dark);</script></option>
+					</select>
+				  </td>
+				</tr>
+                <tr>
+                  <td width="35%"><script type="text/javascript">document.write(langstr.ae_compensation);</script></td>
+                  <td width="40%">
+						<script language="JavaScript">
+						var A_INIT8 = {
+					//		's_form' : 0,
+							's_name': 'juan_envload#color@AEcom',
+							'n_minValue' : 0,
+							'n_maxValue' : 255,
+							'n_value' : ae_compensation,
+							'n_step' : 1
+						}
+						slider_AEcom=new slider(A_INIT8, A_TPL);
+						</script>
+				  </td>
+                  <td width="25%"><input name="text" type="text" id="juan_envload#color@AEcom" size="3" readonly/></td>
+                </tr>
+                <tr>
+				  <td class="marker marker-active" colspan="3"><script type="text/javascript">document.write(langstr.denoise);</script></td>
+				</tr>	
+				<tr>
+				  <td width="35%"><script type="text/javascript">document.write(langstr.denoise_enable);</script></td>
+				  <td colspan="2" width="65%">
+				  	<select name="denoise_enable" id="juan_envload#isp@denoise_enable"  onChange="isp_preview_content(this.id,this.value)">
+					  <option value="yes"><script type="text/javascript">document.write(langstr.on);</script></option>
+					  <option value="no"><script type="text/javascript">document.write(langstr.off);</script></option>
+					</select>
+				  </td>
+				</tr>
+                <tr>
+                  <td width="35%"><script type="text/javascript">document.write(langstr.denoise_strength);</script></td>
+                  <td width="40%">
+						<script language="JavaScript">
+						var A_INIT9 = {
+					//		's_form' : 0,
+							's_name': 'juan_envload#color@denoise_strength',
+							'n_minValue' : 0,
+							'n_maxValue' : 255,
+							'n_value' : denoise_strength,
+							'n_step' : 1
+						}
+						slider_denoise_strength=new slider(A_INIT9, A_TPL);
+						</script>
+				  </td>
+                  <td width="25%"><input name="text" type="text" id="juan_envload#color@denoise_strength" size="3" readonly/></td>                </tr>
+                   <tr>
+				  <td class="marker marker-active" colspan="3"><script type="text/javascript">document.write(langstr.advance);</script></td>
+				</tr>	
+				<tr>
+				  <td width="35%"><script type="text/javascript">document.write(langstr.antiFog);</script></td>
+				  <td colspan="2" width="65%">
+				  	<select name="anti_fog_enable" id="juan_envload#isp@anti_fog_enable"  onChange="isp_preview_content(this.id,this.value)">
+					  <option value="yes"><script type="text/javascript">document.write(langstr.on);</script></option>
+					  <option value="no"><script type="text/javascript">document.write(langstr.off);</script></option>
+					</select>
+				  </td>
+				</tr>
+                <!--tr>
+				  <td width="35%"><script type="text/javascript">document.write(langstr.lowLight);</script></td>
+				  <td colspan="2" width="65%">
+				  	<select name="lowlight_enable" id="juan_envload#isp@lowlight_enable">
+					  <option value="yes"><script type="text/javascript">document.write(langstr.on);</script></option>
+					  <option value="no"><script type="text/javascript">document.write(langstr.off);</script></option>
+					</select>
+				  </td>
+				</tr-->
+                <!--tr>
+				  <td width="35%"><script type="text/javascript">document.write(langstr.gamma);</script></td>
+				  <td colspan="2" width="65%">
+				  	<select name="gamma" id="juan_envload#isp@gamma">
+					  <option value="default"><script type="text/javascript">document.write(langstr.ddefault);</script></option>
+					  <option value="normal"><script type="text/javascript">document.write(langstr.normal_contrast);</script></option>
+                      <option value="high"><script type="text/javascript">document.write(langstr.high_contrast);</script></option>
+					</select>
+				  </td>
+				</tr-->
+                <tr>
+				  <td width="35%"><script type="text/javascript">document.write(langstr.defect);</script></td>
+				  <td colspan="2" width="65%">
+				  	<select name="defect_pixel_enable" id="juan_envload#isp@defect_pixel_enable"  onChange="isp_preview_content(this.id,this.value)">
+					  <option value="yes"><script type="text/javascript">document.write(langstr.on);</script></option>
+					  <option value="no"><script type="text/javascript">document.write(langstr.off);</script></option>
+					</select>
+				  </td>
+				</tr>	
+                </table>
+				<tr>
+				  <td colspan="3">&nbsp;</td>
+				</tr>
+			</table>
+            <hr>
+            <a class="marker marker-active" onClick="isp_save_content();"><script type="text/javascript">document.write(langstr.save_isp);</script></a><br>
+		  </div>
+        </div>
+      </div>
+    </div>              
+    <!-- isp -->
+    
+	
+	<div class="local-network hidden">
+      <div id="inner">
+        <div class="window">
+          <div class="title-window"><script type="text/javascript">document.write(langstr.local);</script></div>
+          <div class="mainer">
+			<table class="table-common">
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td width="35%">MAC</td>
+					<td width="65%"><input id="juan_envload#network@mac" type="text" onFocus="save_mac_value()" onChange="is_valid_mac()"/></td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(langstr.dhcp);</script></td>
+					<td>
+						<input name="dhcp" type="radio" id="juan_envload#network@dhcp_1" onClick="ip_config_change();" />
+						<script type="text/javascript">document.write(langstr.sz_open);</script>
+						<input name="dhcp" type="radio" id="juan_envload#network@dhcp_0" onClick="ip_config_change();" checked />
+						<script type="text/javascript">document.write(langstr.sz_close);</script>
+					</td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(langstr.esee);</script></td>
+					<td>
+						<input name="esee" type="radio" id="juan_envload#network@esee_1" />
+						<script type="text/javascript">document.write(langstr.sz_open);</script>
+						<input name="esee" type="radio" id="juan_envload#network@esee_0" checked />
+						<script type="text/javascript">document.write(langstr.sz_close);</script>
+					</td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(langstr.display_net_id_on_screen);</script></td>
+					<td>
+						<input name="id_disp" type="radio" id="juan_envload#network@id_disp_1" />
+						<script type="text/javascript">document.write(langstr.sz_open);</script>
+						<input name="id_disp" type="radio" id="juan_envload#network@id_disp_0" checked />
+						<script type="text/javascript">document.write(langstr.sz_close);</script>
+					</td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(langstr.ip);</script></td>
+					<td><input id="juan_envload#network@ip" type="text" onChange="is_valid_ip('juan_envload#network@ip')" onFocus="save_ipaddr('juan_envload#network@ip')"/></td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(langstr.gateway);</script></td>
+					<td><input id="juan_envload#network@gateway" type="text" onChange="is_valid_ip('juan_envload#network@gateway')" onFocus="save_ipaddr('juan_envload#network@gateway')"/></td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(langstr.netmask);</script></td>
+					<td><input id="juan_envload#network@submask" type="text" onChange="is_valid_ip('juan_envload#network@submask')" onFocus="save_ipaddr('juan_envload#network@submask')"/></td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(langstr.dns0);</script></td>
+					<td><input id="juan_envload#network@dns" type="text" onChange="is_valid_ip('juan_envload#network@dns')" onFocus="save_ipaddr('juan_envload#network@dns')"/></td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(langstr.dns1);</script></td>
+					<td><input id="juan_envload#network@dns2" type="text" onChange="is_valid_ip('juan_envload#network@dns2')" onFocus="save_ipaddr('juan_envload#network@dns2')"/></td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(langstr.port);</script></td>
+					<td><input id="juan_envload#network@port" type="text" onChange="is_valid_port()" onFocus="save_port()"/></td>
+				</tr>
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+			</table>
+            <hr>
+            -<a class="marker marker-active" onClick="network_save_content();"><script type="text/javascript">document.write(langstr.save_local);</script></a><br>
+			</div>
+        </div>
+      </div>
+    </div>
+	<!--local-netork-->
+	
+	<div class="remote-network hidden">
+      <div id="inner">
+		<div class="window">
+          <div class="title-window"><script type="text/javascript">document.write(langstr.remote);</script></div>
+          <div class="mainer">
+			<table class="table-common">
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="marker marker-active"><script type="text/javascript">document.write(langstr.ddns_set);</script></td>
+				</tr>
+				<tr>
+					<td width="35%"><script type="text/javascript">document.write(langstr.ddns);</script></td>
+					<td width="65%">
+						<input name="ddns" type="radio" id="juan_envload#network@ddns_1" onClick="remote_change();" />
+						<script type="text/javascript">document.write(langstr.sz_open);</script>
+						<input name="ddns" type="radio" id="juan_envload#network@ddns_0" onClick="remote_change();" checked />
+						<script type="text/javascript">document.write(langstr.sz_close);</script>
+					</td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(langstr.server);</script></td>
+					<td>
+						<select id="juan_envload#ddns@provider" >
+						<option>dyndns</option>
+						<option>noip</option>
+						<option>3322</option>
+						<option>changeip</option>
+						<option>popdvr</option>
+						<option>skybest</option>
+						<option>dvrtop</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(langstr.domain);</script></td>
+					<td><input id="juan_envload#ddns@url" /></td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(langstr.user);</script></td>
+					<td><input id="juan_envload#ddns@usr" /></td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(langstr.password);</script></td>
+					<td><input id="juan_envload#ddns@pwd" /></td>
+				</tr>
+
+				<tr>
+					<td colspan="2" class="marker marker-active"><script type="text/javascript">document.write(langstr.pppoe_set);</script></td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(langstr.pppoe);</script></td>
+					<td>
+						<input name="pppoe" type="radio" id="juan_envload#network@pppoe_1" onClick="remote_change();" />
+						<script type="text/javascript">document.write(langstr.sz_open);</script>
+						<input name="pppoe" type="radio" id="juan_envload#network@pppoe_0" onClick="remote_change();" checked />
+						<script type="text/javascript">document.write(langstr.sz_close);</script>
+					</td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(langstr.user);</script></td>
+					<td><input id="juan_envload#pppoe@usr" /></td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(langstr.password);</script></td>
+					<td><input id="juan_envload#pppoe@pwd" /></td>
+				</tr>
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+			</table>
+            <hr>
+            -<a class="marker marker-active" onClick="remote_save_content();"><script type="text/javascript">document.write(langstr.save_remote);</script></a><br>
+			</div>
+        </div>
+      </div>
+    </div>
+	<!--remote-network-->
+
+	<div class="alarm-time-setting hidden">
+      <div id="inner">
+        <div class="window">
+          <div class="title-window">报警时间设置</div>
+          <div class="mainer">
+			<table class="table-common">
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td width="35%">待添加</td>
+					<td width="65%">待添加</td>
+				</tr>
+				<tr>
+					<td>待添加</td>
+					<td>待添加</td>
+				</tr>
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+			</table>
+			<hr>
+			-<a class="marker marker-active">具体分类标签-1</a><br>
+			-<a class="marker">具体分类标签-2</a>
+		  </div>
+        </div>
+      </div>
+	</div>
+	<!--alarm-time-setting-->
+
+	<div class="alarmin hidden">
+      <div id="inner">
+        <div class="window">
+          <div class="title-window">报警设置</div>
+          <div class="mainer">
+			<table class="table-common">
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td width="35%">报警输入(旧)</td>
+					<td width="65%">
+						<input id="juan_envload#alarm@enable_1" type="radio" name="enable" />
+						开启
+						<input id="juan_envload#alarm@enable_0" type="radio" name="enable" checked />
+						关闭
+					</td>
+				</tr>
+				<tr>
+					<td>报警输入模式(旧)</td>
+					<td>
+						<input name="mode" type="radio" id="juan_envload#alarm@mode_1" />
+						开启
+						<input name="mode" type="radio" id="juan_envload#alarm@mode_0" checked />
+						关闭
+					</td>
+				</tr>
+				<tr>
+					<td>报警类型(未接入)</td>
+					<td>
+						<select id="juan_envload#alarm@type">
+						<option>Email报警</option>
+						<option>未添加</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>报警时间(未接入)</td>
+					<td>（未接入）</td>
+				</tr>
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+			</table>
+			<hr>
+			-<a class="marker marker-active">具体分类标签-1</a><br>
+			-<a class="marker">具体分类标签-2</a>
+		  </div>
+        </div>
+      </div>
+    </div>
+	<!--alarmin-->
+	
+	<div class="motion-detection hidden">
+      <div id="inner">
+		<div class="window">
+          <div class="title-window">移动侦测</div>
+          <div class="mainer">
+            这里是移动侦测标签，暂时无内容，等待更新
+            <hr>
+            -<a class="marker marker-active">具体分类标签-1</a><br>
+            -<a class="marker">具体分类标签-2</a> </div>
+        </div>
+      </div>
+    </div>
+	<!--motion-detection-->
+	
+	<div class="ptz hidden">
+      <div id="inner">
+		<div class="window">
+          <div class="title-window">云台设置</div>
+          <div class="mainer">
+			<table class="table-common">
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="marker marker-active">云台设置</td>
+				</tr>
+				<tr>
+					<td width="35%">地址码</td>
+					<td width="65%"><input id="juan_envload#ptzset@id" value="0" /></td>
+				</tr>
+				<tr>
+					<td>协议</td>
+					<td>
+						<select id="juan_envload#ptzset@protocal">
+							<option>PELCO-D</option>
+							<option>PELCO-P</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="marker marker-active">485端口设置</td>
+				</tr>
+				<tr>
+					<td>波特率</td>
+					<td>
+						<select id="juan_envload#ptzset@baudrate" >
+						<option>1200</option>
+						<option>2400</option>
+						<option>4800</option>
+						<option>9600</option>
+						<option>19200</option>
+						<option>38400</option>
+						<option>57600</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>数据位</td>
+					<td>
+						<select id="juan_envload#ptzset@databit" >
+						<option>7</option>
+						<option>8</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>停止位</td>
+					<td>
+					<select id="juan_envload#ptzset@stopbit">
+					<option>1</option>
+					<option>2</option>
+					</select>
+					</td>
+				</tr>
+				<tr>
+					<td>校验</td>
+					<td>
+						<select id="juan_envload#ptzset@crc">
+						<option>无</option>
+						<option>奇校验</option>
+						<option>偶校验</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+			</table>
+            <hr>
+            -<a class="marker marker-active">具体分类标签-1</a><br>
+            -<a class="marker">具体分类标签-2</a> </div>
+        </div>
+      </div>
+    </div>
+	<!--ptz-->
+			
+	<div class="user-management hidden">
+      <div id="inner">
+        <div class="window">
+          <div class="title-window"><script type="text/javascript">document.write(langstr.usermanage)</script></div>
+          <div class="mainer">
+			<table id="tbl_user_manage" class="table-common">
+				<tr>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+				<tr>
+					<td width="21%"><script type="text/javascript">document.write(langstr.username)</script></td>
+					<td width="54%"><script type="text/javascript">document.write(langstr.authority)</script></td>
+					<td width="25%"><script type="text/javascript">document.write(langstr.operation)</script></td>
+				</tr>
+			</table>
+			<table id="tbl_user_manage1" class="table-common">
+				<tr>
+					<td>
+						<button type="button" onClick="user_management_load_content()"><script type="text/javascript">document.write(langstr.update_list)</script></button>
+						<button id="add_user_button" type="button" onClick="user_management_prepare_add()"><script type="text/javascript">document.write(langstr.adduser)</script></button>
+						<button type="button" onClick="user_management_prepare_modify()"><script type="text/javascript">document.write(langstr.changepwd)</script></button>
+						
+			<table id="tbl_add_user" style="display:none;">
+				<tr>
+					<td>
+						<script type="text/javascript">document.write(langstr.username)</script>
+					</td>
+					<td>
+						<input type="text" id="txt_new_usr"  onBlur="user_management_save_new_usr()"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<script type="text/javascript">document.write(langstr.password)</script>
+					</td>
+					<td>
+						<input type="password" id="txt_new_pwd" />
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<button type="button" onClick="user_management_save_new_usr()"><script type="text/javascript">document.write(langstr.save)</script></button>
+						<button type="button" onClick="user_management_prepare_cancel()"><script type="text/javascript">document.write(langstr.cancel)</script></button>
+					</td>
+				</tr>
+			</table>
+			<table id="tbl_modify_pwd" style="display:none;">
+				<tr>
+					<td>
+						<script type="text/javascript">document.write(langstr.oldpwd)</script>
+					</td>
+					<td>
+						<input type="password" id="txt_old_pwd" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<script type="text/javascript">document.write(langstr.newpwd)</script>
+					</td>
+					<td>
+						<input type="password" id="txt_modify_pwd" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<script type="text/javascript">document.write(langstr.confirmpwd)</script>
+					</td>
+					<td>
+						<input type="password" id="txt_repeat_pwd" />
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<button type="button" onClick="user_management_prepare_save_modify_usr()"><script type="text/javascript">document.write(langstr.save)</script></button>
+						<button type="button" onClick="user_management_prepare_cancel()"><script type="text/javascript">document.write(langstr.cancel)</script></button>
+					</td>
+				</tr>
+			</table>						
+			
+					</td>
+				</tr>
+			</table>
+            <hr>
+            <!---<a class="marker marker-active">具体分类标签-1</a><br>
+            -<a class="marker">具体分类标签-2</a>-->
+			</div>
+        </div>
+      </div>
+    </div>
+	<!--user-management-->
+
+	<div class="capture hidden">
+      <div id="inner">
+		<div class="window">
+          <div class="title-window">抓拍</div>
+          <div class="mainer">
+			<table class="table-common">
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="marker marker-active">手动抓拍</td>
+				</tr>
+				<tr>
+					<td width="35%">抓拍路径</td>
+					<td width="65%"><input id="juan_envload#cap@path" value="D:\NetRecord" /></td>
+				</tr>
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="marker marker-active">自动抓拍</td>
+				</tr>
+				<tr>
+					<td>时间间隔</td>
+					<td>
+						<input id="juan_envload#cap@span" value="60"/>
+						分
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<input type="checkbox" id="juan_envload#cap@email" />
+						发送到E-mail
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<input type="checkbox" id="juan_envload#cap@sd" />
+						保存到SD卡
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+			</table>
+            <hr>
+            -<a class="marker marker-active">具体分类标签-1</a><br>
+            -<a class="marker">具体分类标签-2</a> </div>
+        </div>
+      </div>
+    </div>
+	<!--capture-->
+	
+	<div class="email hidden">
+      <div id="inner">
+        <div class="window">
+          <div class="title-window">电子邮件设置</div>
+          <div class="mainer">
+			<table class="table-common">
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td width="35%">待添加</td>
+					<td width="65%">待添加</td>
+				</tr>
+				<tr>
+					<td>待添加</td>
+					<td>待添加</td>
+				</tr>
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+			</table>
+			<hr>
+			-<a class="marker marker-active">具体分类标签-1</a><br>
+			-<a class="marker">具体分类标签-2</a>
+		  </div>
+        </div>
+      </div>
+	</div>
+	<!--email-->
+
+	<div class="time hidden">
+      <div id="inner">
+        <div class="window">
+          <div class="title-window"><script type="text/javascript">document.write(langstr.time);</script></div>
+          <div class="mainer">
+			<table class="table-common">
+				<tr>
+					<td width="35%" class="marker marker-active"><script type="text/javascript">document.write(langstr.dev_time);</script></td>
+					<td width="65%"><input id="curent_time" value="0" disabled="disabled"/></td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(langstr.date_frt);</script></td>
+					<td>
+						<select id="date_form" onChange="showtime();">
+						<option><script type="text/javascript">document.write(langstr.date_frt1);</script></option>
+						<option><script type="text/javascript">document.write(langstr.date_frt2);</script></option>
+						<option><script type="text/javascript">document.write(langstr.date_frt3);</script></option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(langstr.date_del);</script></td>
+					<td>
+						<select id="date_break" disabled onChange="showtime();">
+						<option value="-"><script type="text/javascript">document.write(langstr.date_del1);</script></option>
+						<option value="/"><script type="text/javascript">document.write(langstr.date_del2);</script></option>
+						<option value="."><script type="text/javascript">document.write(langstr.date_del3);</script></option>
+						</select>
+					</td>
+				</tr>
+<!--				<tr>
+					<td>时间格式</td>
+					<td>
+						<select id="time_form">
+						<option>12时制</option>
+						<option>24时制</option>
+						</select>
+					</td>
+				</tr>
+-->				<tr>
+					<td><script type="text/javascript">document.write(langstr.time_zone);</script></td>
+					<td>
+						<input id="time_zone" value="0" onChange="is_valid_zone()" />
+					</td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(langstr.daylightt);</script></td>
+					<td>
+						<input id="daylight_time" value="0" onChange="is_valid_daylight()" />
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="marker marker-active"><script type="text/javascript">document.write(langstr.manual_set);</script></td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(langstr.date);</script></td>
+					<td><input id="m_date" value="" onChange="is_valid_date()" /></td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(langstr.time);</script></td>
+					<td><div class="time_3"><input  class="in"  maxlength="2"  value=""/>:<input  class="in"  maxlength="2" value=""/>:<input  class="in" maxlength="2" value=""/></div><button id="set_time" class="btn" onClick="manual_set_time()"><script type="text/javascript">document.write(langstr.ok);</script></button></td>
+				</tr>
+				<tr>
+					<td colspan="2" class="marker marker-active"><script type="text/javascript">document.write(langstr.sync_pc_time);</script></td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(langstr.pc_time);</script></td>
+					<td><input id="time_pc" value="0" disabled="disabled"><button id="sync_pc" class="btn" onClick="sync_pc_time()"><script type="text/javascript">document.write(langstr.sync);</script></button></td>
+				</tr>
+				<tr>
+					<td colspan="2" class="marker marker-active"><script type="text/javascript">document.write(langstr.sync_ntp_time);</script></td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(langstr.ntp);</script></td>
+					<td>
+						<input name="ntp" type="radio" id="juan_envload#time@ntp_1" onClick="ntp_change();" />
+						<script type="text/javascript">document.write(langstr.sz_open);</script>
+						<input name="ntp" type="radio" id="juan_envload#time@ntp_0" onClick="ntp_change();" checked />
+						<script type="text/javascript">document.write(langstr.sz_close);</script>
+					</td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(langstr.ntp_server);</script></td>
+					<td>
+						<select id="juan_envload#time@ntp_server" name="ntp_server" disabled="disabled">
+						<option>time.windows.com</option>
+						<option>time.nist.gov</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+			</table>
+            <hr>
+            -<a class="marker marker-active" onClick="time_save_content();"><script type="text/javascript">document.write(langstr.save_time);</script></a><br>
+			</div>
+        </div>
+      </div>
+    </div>
+	<!--time-->
+		
+	<div class="initialize hidden">
+      <div id="inner">
+		<div class="window">
+          <div class="title-window"><script type="text/javascript">document.write(langstr.initial);</script></div>
+          <div class="mainer">
+			<table class="table-common">
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="marker marker-active"><script type="text/javascript">document.write(langstr.reboot);</script></td>
+				</tr>
+				<tr>
+					<td colspan="2"><script type="text/javascript">document.write(langstr.reboot_tip);</script></td>
+				</tr>
+				<tr>
+					<td colspan="2"><button class="btn" onClick="reboot()"><script type="text/javascript">document.write(langstr.reboot);</script></button></td>
+				</tr>
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="marker marker-active"><script type="text/javascript">document.write(langstr.restore);</script></td>
+				</tr>
+				<tr>
+					<td colspan="2"><script type="text/javascript">document.write(langstr.restore_tip);</script></td>
+				</tr>
+				<tr>
+					<td colspan="2"><button class="btn" onClick="default_setting()"><script type="text/javascript">document.write(langstr.restore);</script></button></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p id="result">&nbsp;</p></td>
+				</tr>
+				<tr>
+					<td colspan="2" class="marker marker-active"><script type="text/javascript">document.write(langstr.upgrade);</script></td>
+				</tr>
+				<tr>
+					<td colspan="2"><p><script type="text/javascript">document.write(langstr.upgrade_tip);</script></p></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div id="swfupload-control"></div>
+						<span id="txt_status"></span><span id="txt_progress"></span>&nbsp;<input type="button" id="button" /><br />
+						<span id="txt_upgrade_status"></span><span id="txt_upgrade_progress"></span>
+						<div class="file-box" style="display:none;"> 
+							<form action="" method="post" enctype="multipart/form-data"> 			
+							<input type='text' name='textfield' id='textfield' class='txt' disabled="disabled" /> 
+							<input type='button' class='btn_s' value='浏览...' /> 
+							<input type="file" name="fileField" class="file" id="fileField" size="28" onChange="document.getElementById('textfield').value=this.value" /> 
+							<input type="button" name="submit" class="btn_s" onClick="showBg()" value="升级" /> 
+							</form> 
+						</div> 
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><p id="result">&nbsp;</p></td>
+				</tr>
+			</table>
+            <hr>
+			</div>
+        </div>
+      </div>
+    </div>
+	<!--initialize-->
+				
+	<div class="devinfo hidden">
+      <div id="inner">
+		<div class="window">
+          <div class="title-window"><script type="text/javascript">document.write(langstr.devinfo);</script></div>
+          <div class="mainer">
+			<table class="table-common">
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr>
+					<td width="35%"><script type="text/javascript">document.write(langstr.dev_name);</script></td>
+					<td width="65%"><input id="juan#devinfo@name" value="" readonly disabled="disabled" /></td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(langstr.dev_model);</script></td>
+					<td><input id="juan#devinfo@model" value="" readonly disabled="disabled" /></td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(langstr.hw_ver);</script></td>
+					<td><input id="juan#devinfo@hwver" value="" readonly disabled="disabled" /></td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(langstr.sw_ver);</script></td>
+					<td><input id="juan#devinfo@swver" value="" readonly disabled="disabled" /></td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(langstr.rel_time);</script></td>
+					<td><input id="juan#devinfo@reldatetime" value="" readonly disabled="disabled" /></td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(langstr.alarm_num);</script></td>
+					<td><input id="juan#devinfo@alarmnum" value="" readonly disabled="disabled" /></td>
+				</tr>
+				<tr>
+					<td><script type="text/javascript">document.write(langstr.sd_num);</script></td>
+					<td><input id="juan#devinfo@sdnum" value="" readonly disabled="disabled" /></td>
+				</tr>
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+			</table>
+            <hr>
+            <a style="display:none;" class="marker marker-active" onClick="devinfo_load_content(true);">获取IPC参数</a><br>
+			</div>
+        </div>
+      </div>
+    </div>
+	<!--devinfo-->
+	
+  </div>
+  
+  <div class="window window-preview clearfix">
+	  <div class="title-window" id="stream_info"><script type="text/javascript">document.write(langstr.main_stream);</script></div>
+
+				<div id="ipcam_display">
+				</div>
+                <div class="mask_ipcam"><script type="text/javascript">document.write(langstr.install_hinit);</script></div>
+                	
+
+  </div>
+  <!--Preview-->
+	  
+</div>
+<!--Stage -->
+<!--script -->
+</body>
+</html>
+
+<!-- This page is a derivative version of ACFUN~ Thanks for it-->
+<!--                                          --Azrael--      -->

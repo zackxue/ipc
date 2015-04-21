@@ -1,0 +1,11 @@
+
+SOURCES = \
+	  usrm.c \
+
+
+INCLUDES = \
+	   ../../include 
+
+
+LIBRARIES = \
+

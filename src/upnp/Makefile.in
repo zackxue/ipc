@@ -1,0 +1,11 @@
+
+SOURCES = \
+	  upnp.c \
+	  upnp_util.c \
+
+
+INCLUDES = \
+
+
+LIBRARIES = \
+

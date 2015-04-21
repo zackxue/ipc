@@ -1,0 +1,14 @@
+
+SOURCES = \
+	  sysconf.c \
+	  sysconf_hi3507_inception.c \
+	  sysconf_hi3518a_inception.c \
+	  sysconf_hi3518c_inception.c \
+	  sysconf_hi3516c_inception.c \
+
+INCLUDES = \
+	   ../../include 
+
+
+LIBRARIES = \
+

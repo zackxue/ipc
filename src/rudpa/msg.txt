@@ -1,0 +1,1 @@
+<esee ver="1.0"><head><cmd>11010</cmd><tick>0</tick></head><clientip>192.168.1.25</clientip><clientport>63879</clientport><turnservers><turnserver>210.21.39.197:10201</turnserver></turnservers></esee>

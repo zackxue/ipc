@@ -1,0 +1,3 @@
+
+all:
+	gcc -DLINUX -g3 -Wall -O0 -I../include ja_ini.c ja_matrix.c generic/inifile.c -o ini_test

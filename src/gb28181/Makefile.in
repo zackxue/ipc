@@ -1,0 +1,10 @@
+
+	  
+SOURCES = $(wildcard ./*.c)
+
+INCLUDES = \
+	   $(INC_PATH)/gb28181	
+
+
+LIBRARIES = \
+

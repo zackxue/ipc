@@ -1,0 +1,11 @@
+
+SOURCES = \
+	  ddns.c \
+	  ddns_dyndns.c \
+	  ddns_util.c
+
+INCLUDES = \
+
+
+LIBRARIES = \
+

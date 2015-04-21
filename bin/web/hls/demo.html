@@ -1,0 +1,21 @@
+<html>
+<script>
+function get_session_id()
+{
+	var ret = parseInt(Math.random() * 65536);
+	alert(ret);
+	return ret;
+}
+function gen_video()
+{
+	var str = "<video width=\"100%\" height=\"100%\" src=\"/hls/demo.m3u8?session=";
+	str += get_session_id();
+	str += "\">This is an HLS demo</video>";
+	document.write(str);
+}
+</script>
+<body>
+<!--video src="/m3u8?session="<script>document.write(get_session_id())</script> >This is an HLS demo </video-->
+<script>gen_video()</script>
+</body>
+</html>

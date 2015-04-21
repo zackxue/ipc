@@ -1,0 +1,51 @@
+
+
+include Makefile.in
+
+LIB_PATH := ../../lib
+DEBUG_PATH := ../../debug
+
+SRC := $(SOURCES)
+INC := $(patsubst %,-I$(CURDIR)/%,$(INCLUDES))
+OBJ := $(patsubst %.c,$(DEBUG_PATH)/%.o,$(patsubst %.cpp,$(DEBUG_PATH)/%.o,$(SRC)))
+DEP := $(patsubst %.o,%.d,$(OBJ))
+
+RM := @rm -Rf
+
+CC ?= gcc
+CFLAGS := $(GLOBAL_CFLAGS) $(LOCAL_FLAGS) $(INC)
+CXX ?= g++
+CXXFLAGS := $(CFLAGS)
+AR ?= ar
+LDFLAGS:=
+
+###########################################################
+###########################################################
+
+LIB_NAME := lib$(shell basename $(CURDIR)).a
+LIB_OUT := $(LIB_PATH)/$(LIB_NAME)
+
+.PHONY : clean 
+
+$(DEBUG_PATH)/$(shell basename %.o) : %.c
+	@mkdir -p $(shell dirname $@)
+	@echo -e "\033[33mMaking $<...\033[0m"
+	$(CC) $(CFLAGS) -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o $@ -c $<
+
+$(DEBUG_PATH)/$(shell basename %.o) : %.cpp
+	@mkdir -p $(shell dirname $@)
+	@echo -e "\033[32mMaking $<...\033[0m"
+	$(CXX) $(CXXFLAGS) -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o $@ -c $<
+
+$(LIB_OUT) : $(OBJ)
+	$(RM) $@
+	$(AR) rcs $@ $^
+sinclude $(DEP)
+
+clean:
+	@rm -Rf $(OBJ)
+
+distclean: clean
+	@rm -Rf $(LIB_OUT)
+
+

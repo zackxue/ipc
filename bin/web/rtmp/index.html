@@ -1,0 +1,23 @@
+
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<html>
+<head>
+<title>JA Flash Player</title>
+</head>
+
+<body>
+<input type="text" style="width:200px"  id="rtmp_url" value="rtmp://192.168.1.168:80/" />
+<input type="text" style="width:192px"  id="rtmp_stream" value="720p.264" />
+<input type="button" style="width:100px" value="connect rtmp" onclick="player.connectRTMP(rtmp_url.value, rtmp_stream.value)" />
+<br>
+<input type="text" style="width:400px"  id="flv_url" value="http://192.168.1.168/cgi-bin/view.cgi" />
+<input type="button" style="width:100px" value="connect flv" onclick="player.connectFLV(flv_url.value)" />
+<br>
+<input type="button" style="width:100px" value="disconnect" onclick="player.disconnect()" />
+<br>
+<div style="background:#000000; width:100%; height:720;">
+	<object id="player" type="application/x-shockwave-flash" data="JaViewer.swf" height="100%" width="100%" />
+</div>
+</div>
+</body>
+</html>

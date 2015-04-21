@@ -1,0 +1,48 @@
+
+CC ?=
+CFLAGS ?=
+CXX ?=
+CXXFLAGS ?= $(CFLAGS)
+AR ?=
+LDFLAGS ?=
+
+INC_PATH ?= ./include
+LIB_PATH ?= ./lib
+DBG_PATH ?= ./debug
+
+include Makefile.in
+
+SRC := $(addprefix $(CURDIR)/, $(SOURCES))
+INC := $(addprefix -I, $(INCLUDES) $(INC_PATH))
+OBJ := $(patsubst %.c,%.o,$(patsubst %.cpp,%.o,$(SRC)))
+DEP := $(patsubst %.o,%.d,$(OBJ))
+
+SRCLIB_CFLAGS := $(CFLAGS) $(INC) $(LOCAL_FLAGS)
+SRCLIB_CXXFLAGS := $(CXXFLAGS) $(INC) $(LOCAL_FLAGS)
+
+###########################################################
+###########################################################
+
+LIB_NAME := "$(LIB_PATH)/lib$(shell basename $(CURDIR)).a"
+
+.PHONY : clean 
+
+%.o : %.c
+	@echo -e "\033[33mMaking $(shell basename $<) ...\033[0m"
+	$(CC) $(SRCLIB_CFLAGS) -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o $@ -c $<
+
+%.o : %.cpp
+	@echo -e "\033[32mMaking $(shell basename $<) ...\033[0m"
+	$(CXX) $(SRCLIB_CXXFLAGS) -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o $@ -c $<
+
+$(LIB_NAME) : $(OBJ)
+	rm -f $@
+	$(AR) rcs $@ $^
+sinclude $(DEP)
+
+clean:
+	@rm -Rf $(shell find $(CURDIR) -name *.o)
+	@rm -Rf $(shell find $(CURDIR) -name *.d)
+	
+
+

@@ -1,0 +1,13 @@
+
+SOURCES = \
+	  i2cm_18a.c \
+	  watchdog.c \
+	  rtc_18a.c  \
+
+
+INCLUDES = \
+	   ../../include 
+
+
+LIBRARIES = \
+

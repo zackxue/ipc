@@ -1,0 +1,44 @@
+
+td{
+	padding:0;
+}
+#txtLoadinInfo{ 
+	background-color:#f33; 
+	font-size:12px; 
+	height:24px; 
+	line-height:24px; 
+	display:block; 
+	color:#fff; 
+	text-align:center; 
+	margin:4px; 
+	padding:0 8px; 
+	border-radius:4px;
+}
+.alpha{
+	filter:alpha(opacity=60);
+	width:400px;
+	} 
+.middle span{
+	float:left;
+	font-size:15px;
+	font-family:Tahoma, Geneva, sans-serif;
+}
+
+input{
+	border-radius:10px;
+	border:2px solid #fff;
+	color:#999;
+}
+.button{
+	cursor:pointer;
+	line-height:72px;
+	color:#999;
+	background-color:#ccc;
+}
+hr{
+	height:1px;
+	border:none;
+	border-top:1px dashed #ccc;
+	width:70%;
+}
+

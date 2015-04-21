@@ -1,0 +1,12 @@
+
+	  
+SOURCES = $(wildcard ./*.c)
+
+INCLUDES = \
+	../../api/include\
+	../../api/include/http_auth\
+	../../api/include/rtp	
+
+
+LIBRARIES = \
+

@@ -1,0 +1,14 @@
+
+SOURCES = \
+	  aval.c \
+	  socket_rw.c \
+	  ucode.c \
+	  gpio.c \
+	  jsocket.c \
+	  ntp.c \
+
+INCLUDES = \
+
+
+LIBRARIES = \
+

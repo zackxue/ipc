@@ -1,0 +1,11 @@
+
+SOURCES = \
+	  sensor_callback.c \
+	  sensor.c
+
+
+INCLUDES = \
+	../../inlcude
+
+LIBRARIES = \
+

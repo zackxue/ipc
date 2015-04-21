@@ -1,0 +1,11 @@
+
+SOURCES = \
+	  owsp.c \
+	  owsp_imp.c \
+
+
+INCLUDES = \
+
+
+LIBRARIES = \
+

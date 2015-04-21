@@ -1,0 +1,21 @@
+
+#define STATIC_CONNLST
+
+#define UsedRTSP
+
+//#define A1
+//#define A3
+
+ #define A4
+
+
+#if defined(A4)
+  //#define tw9910
+ #define mt9m131
+ #define UsedIRCut
+ #define JudSDTime
+ ////tony add 20121121 for JI  for ov9715 9m034 begin	
+ //#define Set9715Only
+ #define Set9m034Only
+#endif
+

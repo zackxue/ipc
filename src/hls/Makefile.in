@@ -1,0 +1,15 @@
+
+SOURCES = \
+	  m3u8.c \
+	  mpegts.c \
+	  mpeg2ts.c \
+	  hls.c \
+	  hls_common.c \
+	  hls_segmentor.c \
+
+
+INCLUDES = \
+
+
+LIBRARIES = \
+

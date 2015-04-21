@@ -1,0 +1,16 @@
+
+SOURCES = \
+	  rtcp_from_spec.c \
+	  rtp_h264.c \
+	  rtspd.c \
+	  rtspd_rtcp.c \
+	  rtspd_rtp.c \
+	  rtspd_rtsp.c \
+	  rtsp_parser.c \
+
+INCLUDES = \
+	   ../../include 
+
+
+LIBRARIES = \
+

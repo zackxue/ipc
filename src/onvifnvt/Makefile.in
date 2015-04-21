@@ -1,0 +1,17 @@
+
+SOURCES = \
+	soapC.c \
+	soapServer.c \
+	stdsoap2.c \
+	ONVIF_common.c \
+	onvif_nvt.c	\
+
+
+
+INCLUDES =
+INCLUDES += ../../include
+
+
+LIBRARIES =
+
+

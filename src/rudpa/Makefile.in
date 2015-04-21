@@ -1,0 +1,20 @@
+
+SOURCES = \
+	  check.c \
+	  listen.c \
+	  rudp.c \
+	  send.c \
+	  session.c \
+	  Aes.c \
+	  turn.c \
+	  esee.c \
+	  esee_protocol.c\
+	  traversal.c\
+	  rudpa_soup.c \
+	  rudpa.c \
+
+INCLUDES = \
+
+
+LIBRARIES = \
+

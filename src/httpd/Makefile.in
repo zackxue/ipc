@@ -1,0 +1,13 @@
+
+SOURCES = 
+SOURCES += ./httpd.c
+SOURCES += ./httpd_auth.c
+SOURCES += ./http_common.c
+SOURCES += ./http_header.c
+
+
+INCLUDES = \
+
+
+LIBRARIES = \
+

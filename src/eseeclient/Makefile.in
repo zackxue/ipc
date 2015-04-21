@@ -1,0 +1,14 @@
+
+SOURCES = \
+	  aes.c \
+	  esee_client.c \
+	  esee_env.c \
+	  esee_crypto.c \
+	  esee_protocol.c  
+
+
+INCLUDES = \
+
+
+LIBRARIES = \
+

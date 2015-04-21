@@ -1,0 +1,10 @@
+
+SOURCES = \
+	  lonse_discover.c \
+
+
+INCLUDES = \
+	../../inlcude
+
+LIBRARIES = \
+

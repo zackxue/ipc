@@ -1,0 +1,12 @@
+
+SOURCES = \
+	  unistruct_gfun.c \
+	  unistruct_sysconf.c \
+	  unistruct_state.c \
+	  unistruct_ptz.c \
+
+INCLUDES = \
+
+
+LIBRARIES = \
+

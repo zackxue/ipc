@@ -1,0 +1,107 @@
+<juan ver="" seq="">
+	<conf type="read" user="admin" password="">
+		<spec vin="" ain="" io_sensor="" io_alarm="" hdd="" sd_card="" />
+		<info device_name="" device_model="" device_sn="" device_sn_head="" hardware_version="" software_version="" build_date="" build_time="" />
+		<datetime date_format="" date_separator="" time_format="" time_zone="" day_saving_time="" ntp_sync="" ntp_user_domain=""	/>
+		<generic key_buzzer="" idle_timeout="" irda_id=""  language="" />
+		<network mac="">
+			<lan dhcp="" static_ip="" static_netmask="" static_gateway="" static_preferred_dns="" static_alternate_dns="" >
+				<port0 name="" value=""/>
+			</lan>
+			<pppoe enable="" username="" password="" />
+			<ddns enable="" provider="" url="" username="" password="" />
+			<threeg enable="" apn="" pin="" username="" password="" />
+			<esee enable="" id="" id_disp="" />
+		</network>
+		<ain0 sample_rate="" sample_width="">
+			<encode0 engine="" packet="" />
+		</ain0>
+		<vin0 shutter="" capture="" hue="" contrast="" brightness="" saturation="" flip= "" mirror="" channel_name="">
+			<md width="" height="" sensitivity="" data="" />
+			<encode_h2640>
+				<stream0 name="" profile="" size="" mode="" on_demand="" fps="" gop="" ain_bind="" quality="" bps="" />
+			</encode_h2640>
+			<encode_h2641>
+				<stream0 name="" profile="" size="" mode="" on_demand="" fps="" gop="" ain_bind="" quality="" bps="" />
+			</encode_h2641>
+			<encode_jpeg0 name="" quality="" size="" />
+		</vin0>
+		<isp>
+			<image_attr hue="" contrast="" brightness="" saturation="" sharpen="" flip="" mirror="" />
+			<scene mode="" />
+			<white_balance mode="" />
+			<day_night_mode ircut_control_mode="" ircut_mode="" />
+			<wide_dynamic_range enable="" strength="" />
+			<exposure  mode="" ae_compensation="" />
+			<denoise denoise_enable="" denoise_strength="" />
+			<advance anti_fog_enable="" lowlight_enable="" gamma="" defect_pixel_enable="" />				
+		</isp>
+		<ptz0 baudrate="" addr="" protocol="">
+			<tour0 preset="" time="" actived="" />
+			<tour1 preset="" time="" actived="" />
+			<tour2 preset="" time="" actived="" />
+			<tour3 preset="" time="" actived="" />
+			<tour4 preset="" time="" actived="" />
+			<tour5 preset="" time="" actived="" />
+		</ptz0>
+		<storage>
+			<hdd enable="" over_write="" />
+			<sd_card enable="" over_write="" />
+		</storage>
+		<alarm>
+			<email enable="" />
+		</alarm>
+		<record type="manual/schedule">
+			<schedule actived="" type="everyday or weekday/weekend">
+				<day0>
+					<time0 start="" end="" time="yes" motion="no" sensor="no"/>
+					<time1 start="" end="" time="" motion="" sensor=""/>
+					<time2 start="" end="" time="" motion="" sensor=""/>
+				</day0>
+				<day1>
+					<time0 start="" end="" time="" motion="" sensor=""/>
+					<time1 start="" end="" time="" motion="" sensor=""/>
+					<time2 start="" end="" time="" motion="" sensor=""/>
+				</day1>
+				<day2>
+					<time0 start="" end="" time="" motion="" sensor=""/>
+					<time1 start="" end="" time="" motion="" sensor=""/>
+					<time2 start="" end="" time="" motion="" sensor=""/>
+				</day2>
+				<day3>
+					<time0 start="" end="" time="" motion="" sensor=""/>
+					<time1 start="" end="" time="" motion="" sensor=""/>
+					<time2 start="" end="" time="" motion="" sensor=""/>
+				</day3>
+				<day4>
+					<time0 start="" end="" time="" motion="" sensor=""/>
+					<time1 start="" end="" time="" motion="" sensor=""/>
+					<time2 start="" end="" time="" motion="" sensor=""/>
+				</day4>
+				<day5>
+					<time0 start="" end="" time="" motion="" sensor=""/>
+					<time1 start="" end="" time="" motion="" sensor=""/>
+					<time2 start="" end="" time="" motion="" sensor=""/>
+				</day5>
+				<day6>
+					<time0 start="" end="" time="" motion="" sensor=""/>
+					<time1 start="" end="" time="" motion="" sensor=""/>
+					<time2 start="" end="" time="" motion="" sensor=""/>
+				</day6>
+			</schedule>
+			<nas enable="" url="Network Attached Storage"/>	
+		</record>	
+		<advanced>
+			<user_admin />
+			<snop_capture enable="" time_step="" />
+		</advanced>
+	</conf>
+	<setup user="admin" password="">
+		<time value="" />
+		<system operation="reboot/default factory" />
+		<ptz />
+	</setup>
+	<login user="admin" password="">
+		<verify="yes/no" />
+	</login>	
+</juan>

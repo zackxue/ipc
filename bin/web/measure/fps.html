@@ -1,0 +1,42 @@
+﻿
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<html>
+<script>
+function getarg()
+{
+	if(window.location.search != ""){
+		var allargs = window.location.search.split("?")[1];
+		var args = allargs.split("&");
+		for(var i=0; i<args.length; i++){
+			var arg = args[i].split("=");
+			eval('this.'+arg[0]+'="'+arg[1]+'";');
+		}
+	}
+}
+
+var q_args = new getarg();
+var q_args_fps = q_args.fps ? q_args.fps : 30;
+var fps_counter = 0;
+function fps_conter(){
+	fps_counter++;
+	fps_counter %= q_args_fps;
+	document.getElementById("label1").innerText = fps_counter + 1;
+	with(document.getElementById("label2")){
+		innerHTML = "";
+		for(var i = 0; i < q_args_fps; ++i){
+			if(0 == i % 10){
+				innerHTML += "<br>";
+			}
+			innerHTML += (i == fps_counter ? "■" : "□" );
+		}
+	}
+}
+</script>
+
+<body onLoad="setInterval(fps_conter, 1000 / q_args_fps)">
+<div align="center">
+<span id="label1" style="font-size:300px"></span>
+<span id="label2" style="font-size:30px"></span>
+</div>
+</body>
+</html>

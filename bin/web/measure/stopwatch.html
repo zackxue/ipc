@@ -1,0 +1,17 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<html>
+<body onLoad="setInterval(stop_watch, 10)">
+<div align="center">
+<span id="label" style="font-size:100px"></span>
+</div>
+<script>
+function stop_watch()
+{
+	var time = new Date();
+	var sstring = time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds() + "." + time.getMilliseconds();
+	document.getElementById("label").innerText = sstring;
+}
+</script>
+</body>
+</html>

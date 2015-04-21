@@ -1,0 +1,15 @@
+
+SOURCES = \
+	  firmware.c \
+	  firmware_env.c \
+	  firmware_import.c \
+	  firmware_make.c \
+	  firmware_upgrade.c 
+
+
+INCLUDES = \
+	../../include
+
+
+LIBRARIES = \
+

@@ -1,0 +1,12 @@
+
+SOURCES = \
+	  smtp.c \
+	  smtp_eml.c \
+	  smtp_ssl_server.c \
+
+
+INCLUDES = \
+
+
+LIBRARIES = \
+
